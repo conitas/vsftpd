@@ -15,5 +15,5 @@ services:
       - "0.0.0.0:9921:21"
       - "10090-10100:10090-10100"
     volumes:
-      - "${PWD}/files:/home/${FTP_USER}"
+      - "${PWD}/files:/home/${FTP_USER:-files}"
 

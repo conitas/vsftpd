@@ -1,0 +1,39 @@
+language: minimal
+
+services:
+  - docker
+dist:
+  xenial
+
+env:
+  DOCKER_COMPOSE_VERSION: 1.23.2
+
+addons:
+  apt:
+    packages:
+      - curl 
+      - docker-ce
+
+before_install:
+  # Docker Compose Install
+  - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+  - chmod +x docker-compose
+  - sudo mv docker-compose /usr/local/bin
+
+
+install:
+   # Docker
+   - docker-compose build
+   - mkdir -p files && echo 'test' > files/test
+   - docker-compose up -d
+
+# test ftps functionality here
+script:
+  - timeout 30 bash -c 'until printf "" 2>>/dev/null >>/dev/tcp/$0/$1; do sleep 1; done' localhost 9921
+  - docker-compose ps
+  - curl -k -vvv --ftp-ssl -ftp-pasv --user files:files ftp://localhost:9921/  
+  - curl -k -vvv --ftp-ssl --ftp-pasv --user files:files ftp://localhost:9921/test
+
+after_script:
+  - docker-compose stop
+  - docker-compose rm -f
