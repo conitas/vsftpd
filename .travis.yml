@@ -3,7 +3,7 @@ language: minimal
 services:
   - docker
 dist:
-  xenial
+  bionic
 
 env:
   DOCKER_COMPOSE_VERSION: 1.23.2
@@ -31,7 +31,7 @@ install:
 script:
   - timeout 30 bash -c 'until printf "" 2>>/dev/null >>/dev/tcp/$0/$1; do sleep 1; done' localhost 9921
   - docker-compose ps
-  - curl -k -vvv --ftp-ssl -ftp-pasv --user files:files ftp://localhost:9921/  
+  - curl -k -vvv --ftp-ssl --ftp-pasv --user files:files ftp://localhost:9921/  
   - curl -k -vvv --ftp-ssl --ftp-pasv --user files:files ftp://localhost:9921/test
 
 after_script:

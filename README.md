@@ -1,4 +1,4 @@
-# Simple Preconfigured for FTPS Single User VSFTPD
+# Simple Preconfigured for FTPS Single User vsFTPd [![Build Status](https://travis-ci.org/itasgmbh/vsftpd.svg?branch=master)](https://travis-ci.org/itasgmbh/vsftpd)
 
 This is a simple FTPS server preconfigured for simple user mode and secured by default with TLS > 1.0.
 
