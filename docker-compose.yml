@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+
+  vsftpd:
+    image: itasgmbh/vsftpd      
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      - "FTP_USER=${FTP_USER:-files}"
+      - "FTP_PASSWORD=${FTP_PASSWORD:-files}"
+    ports:
+      - "0.0.0.0:9920:20"
+      - "0.0.0.0:9921:21"
+      - "10090-10100:10090-10100"
+    volumes:
+      - "${PWD}/files:/home/${FTP_USER:-files}"
+
