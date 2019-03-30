@@ -1,6 +1,8 @@
 # Simple Preconfigured for FTPS Single User vsFTPd [![Build Status](https://travis-ci.org/itasgmbh/vsftpd.svg?branch=master)](https://travis-ci.org/itasgmbh/vsftpd)
+![Docker Cloud Automated build](https://img.shields.io/docker/cloud/automated/itasgmbhde/vsftpd.svg)
+![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/itasgmbhde/vsftpd.svg)
 
-This is a simple FTPS server preconfigured for simple user mode and secured by default with TLS > 1.0.
+This is a simple FTPS server preconfigured for single user mode secured by default with TLS > 1.0.
 
 Inspired by [fauria/docker-vsftpd](https://github.com/fauria/docker-vsftpd)
 and [onjin/docker-alpine-vsftpd](https://github.com/onjin/docker-alpine-vsftpd)
